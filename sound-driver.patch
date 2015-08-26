@@ -1,7 +1,5 @@
-From cabf5b8e22d713e305ae0fe99da9ece67d977d89 Mon Sep 17 00:00:00 2001
 From: Michele Curti <michele.curti@gmail.com>
-Date: Wed, 26 Aug 2015 14:24:14 +0200
-Subject: [PATCH] x205ta audio driver
+Subject: [PATCH] x205ta sound driver
 
 Signed-off-by: Michele Curti <michele.curti@gmail.com>
 ---
@@ -69,7 +67,7 @@ index 05fde5e6e..956272c 100644
            If unsure select "N".
  
 diff --git a/sound/soc/intel/atom/sst/sst_acpi.c b/sound/soc/intel/atom/sst/sst_acpi.c
-index bb19b58..8275d5a 100644
+index bb19b58..44fdb02 100644
 --- a/sound/soc/intel/atom/sst/sst_acpi.c
 +++ b/sound/soc/intel/atom/sst/sst_acpi.c
 @@ -118,7 +118,7 @@ static const struct sst_res_info byt_rvp_res_info = {
@@ -85,8 +83,8 @@ index bb19b58..8275d5a 100644
  static struct sst_machines sst_acpi_bytcr[] = {
  	{"10EC5640", "T100", "bytt100_rt5640", NULL, "intel/fw_sst_0f28.bin",
  						&byt_rvp_platform_data },
-+	{"10EC5648", "X205", "bytx205_rt5645", NULL, "intel/fw_sst_0f28.bin",
-+						&byt_rvp_platform_data },
++	{"10EC5648", "X205", "bytx205_rt5645", NULL,
++		"intel/fw_sst_0f28_ssp0.bin", &byt_rvp_platform_data },
  	{},
  };
  
