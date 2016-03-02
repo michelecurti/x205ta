@@ -1,0 +1,39 @@
+From 4789f5492b95131e36ff424cfd38f919d4820bbc Mon Sep 17 00:00:00 2001
+From: Michele Curti <michele.curti@gmail.com>
+Date: Wed, 2 Mar 2016 17:14:08 +0100
+Subject: [PATCH 2/3] atom byt sst: add acpi match
+
+Add the ACPI match and use the ssp0 fw (because this atom has only two
+ssp and it seems that ssp0 is the one used).
+Also change the acpi ipc irq index, this is a workaround.
+
+Signed-off-by: Michele Curti <michele.curti@gmail.com>
+---
+ sound/soc/intel/atom/sst/sst_acpi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/intel/atom/sst/sst_acpi.c b/sound/soc/intel/atom/sst/sst_acpi.c
+index 4fce03f..5d28ff02 100644
+--- a/sound/soc/intel/atom/sst/sst_acpi.c
++++ b/sound/soc/intel/atom/sst/sst_acpi.c
+@@ -109,7 +109,7 @@ static const struct sst_res_info byt_rvp_res_info = {
+ 	.mbox_size = 0x1000,
+ 	.acpi_lpe_res_index = 0,
+ 	.acpi_ddr_index = 2,
+-	.acpi_ipc_irq_index = 5,
++	.acpi_ipc_irq_index = 0,
+ };
+ 
+ static struct sst_platform_info byt_rvp_platform_data = {
+@@ -327,6 +327,8 @@ static struct sst_acpi_mach sst_acpi_bytcr[] = {
+ 						&byt_rvp_platform_data },
+ 	{"INTCCFFD", "bytcr_rt5640", "intel/fw_sst_0f28.bin", "bytcr_rt5640", NULL,
+ 						&byt_rvp_platform_data },
++	{"10EC5648", "bytcr_rt5648", "intel/fw_sst_0f28_ssp0.bin", "bytcr_rt5640",
++						NULL, &byt_rvp_platform_data },
+ 	{"10EC5651", "bytcr_rt5651", "intel/fw_sst_0f28.bin", "bytcr_rt5651", NULL,
+ 						&byt_rvp_platform_data },
+ 	{},
+-- 
+2.7.2
+
